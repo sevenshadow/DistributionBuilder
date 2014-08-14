@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Le fav icon -->
+    <link rel="shortcut icon" href="favicon.png">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Distribution Builder JQuery v2.0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    
+    <!-- Le JavaScript files -->
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="bootstrap/js/bootstrap-collapse.js"></script>
+    <script type="text/javascript" src="js/distBuilder.js"></script>
+  </head>
+
+  <body>
+
+  <!-- Navbar
+  ================================================== -->
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="./index.html">DistBuilder v2.0</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="active">
+              <a href="#">Main</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <div class="clear"></div>
+  <!-- Main
+  ================================================== -->  
+  <div class="container">
+  <!-- Parameters
+  -------------------------------------------------- -->
+    <div class="row value-box">
+      <div class="accordion span12" id="accordion">
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+              » Parameters
+            </a>
+          </div>
+          <div id="collapseOne" class="accordion-body collapse in">
+            <div class="accordion-inner">
+<!--
+              <div class="numVals">
+                <label for="numCol">Number of columns:</label>
+                <input type="text" name="numCol" value="9" id="numCol" class="txtValue"> <br/>
+                <label for="numStack">Number of markers:</label>
+                <input type="text" name="numStack" value="30" id="numStack"> <br/>
+                <label for="stackCol">Initial stack column:</label>
+                <input type="text" name="stackCol" value="4" id="stackCol"> <br/>
+              </div>
+              <div class="textVals">
+                <label for="title">Title:</label>
+                <input type="text" name="distTitle" value="Distribution Builder" id="distTitle"> <br/>
+                <label for="xLabel">XLabel:</label>
+                <input type="text" name="xLabel" value="Height" id="xLabel"> <br/>  
+                <label for="yLabel">YLabel:</label>
+                <input type="text" name="yLabel" value="Number of ocurrences" id="yLabel"> <br/>
+              </div>
+-->
+              <div class="jsonVals">
+                  <textarea rows="5" name="dataIn" value="" id="dataIn"> </textarea>  
+              </div>
+              <div class="submit-btn" id="submit-btn-top">
+                <button type="submit" class="btn" onclick="genDataIn(1)">Update</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div id="display" class="span12">&nbsp;</div>
+    </div>
+    
+    <div class="row">
+      <div id="dist-title" class="span4 offset4"></div>
+      <div id="budget-container" class="span3">
+        <div id="budget"></div>
+        <div id="budget-bar-container" class="progress progress-success progress-striped">
+          <div id="budget-bar" class="bar"></div>
+        </div>
+      </div>   
+    </div>
+    
+    <div class="row" id="graphAreaContainer">
+      <div  id="col-labels-container" class="span12">
+        <div id="col-labels"></div>
+      </div>
+      <div  id="graphArea" class="span12">
+        <div id="distBuilder"></div>
+      </div>
+    </div>
+    <div class="clear"></div>
+
+    <!-- Axis labels -->
+    <div class="row">
+      <div class="axLabel xLabel span2 offset5">
+        <div id="dist-xLabel"></div>
+      </div>
+      <div class="axLabel yLabel">
+        <div id="dist-yLabel"></div>
+      </div>
+    </div>
+    
+    <div class="clear"></div>
+    
+    <!-- Submit button -->
+    <div class="row"> 
+      <div class="submit-btn-container span4 offset4">
+        <button id="submit-btn" type="submit" class="btn">Done</button>
+      </div>
+    </div>
+    
+    <div class="row" style="display:none">
+      <div id="display-out" class="span12"></div>
+    </div>  
+      
+    <div class="row" style="display:none">
+      <div id="dialog-confirm" title="Submit Confirmation">
+        <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+          Are you sure you want to submit the distribution?
+        </p>
+      </div>
+    </div>  
+  
+  </div>
+  
+  <div class="clear"></div>
+  
+    <!-- Footer
+  -------------------------------------------------- -->
+  <footer class="footer">
+    <div class="container">  
+      <div class="row">
+        <div id="xzlab" class="span2 offset5">
+            <div>« Web design »</div> 
+            <div><a href="http://xzlab.org">XZLab.org</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>
